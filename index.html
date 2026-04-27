@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Technological Innovation | Transformamos talento en resultados</title>
+  <meta name="description" content="Empresa líder en coaching empresarial y capacitación organizacional en Guatemala. Transformamos talento en resultados reales y medibles."/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy:   #0D2B5A;
+      --blue:   #0D6EBF;
+      --blue2:  #1A8FE3;
+      --green:  #3D9E3D;
+      --green2: #52C352;
+      --light:  #E8F4FD;
+      --gray:   #F5F7FA;
+      --dark:   #0A1628;
+      --text:   #1E293B;
+      --muted:  #64748B;
+      --white:  #FFFFFF;
+      --card-shadow: 0 4px 24px rgba(13,43,90,.10);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(36px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 72px;
+      background: rgba(10,22,40,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      transition: background .3s;
+    }
+    nav.scrolled { background: rgba(10,22,40,.98); box-shadow: 0 2px 20px rgba(0,0,0,.3); }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo svg { height: 40px; }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a { color: rgba(255,255,255,.80); text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: .3px; transition: color .2s; }
+    .nav-links a:hover { color: var(--white); }
+    .btn-nav { background: var(--green); color: #fff !important; padding: 9px 22px; border-radius: 50px; font-weight: 700 !important; font-size: 13px !important; transition: background .2s, transform .2s !important; }
+    .btn-nav:hover { background: var(--green2) !important; transform: translateY(-1px); }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: #fff; margin: 5px 0; border-radius: 2px; transition: .3s; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--dark) 0%, #0D2B5A 40%, #0A4A8A 70%, #0D6EBF 100%);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding-top: 72px;
+    }
+    .hero-particles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .hero-particles::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(13,110,191,.25) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(61,158,61,.15) 0%, transparent 40%),
+        radial-gradient(circle at 60% 80%, rgba(26,143,227,.20) 0%, transparent 40%);
+    }
+    /* Hexagonal grid overlay */
+    .hex-bg {
+      position: absolute; inset: 0; opacity: .06;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='92'%3E%3Cpolygon points='40,2 78,22 78,62 40,82 2,62 2,22' fill='none' stroke='%23fff' stroke-width='1'/%3E%3C/svg%3E");
+      background-size: 80px 92px;
+    }
+    /* Animated lines */
+    .circuit-line {
+      position: absolute; background: linear-gradient(90deg, transparent, rgba(13,110,191,.4), transparent);
+      height: 1px; animation: scan 4s linear infinite;
+    }
+    .circuit-line:nth-child(1) { width: 60%; top: 25%; left: -10%; animation-delay: 0s; }
+    .circuit-line:nth-child(2) { width: 40%; top: 55%; left: 20%; animation-delay: 1.5s; }
+    .circuit-line:nth-child(3) { width: 50%; top: 75%; left: -5%; animation-delay: 3s; }
+    @keyframes scan { 0% { transform: translateX(-20%); opacity: 0; } 30% { opacity: 1; } 70% { opacity: 1; } 100% { transform: translateX(130%); opacity: 0; } }
+
+    /* Glowing orb */
+    .orb {
+      position: absolute; border-radius: 50%; filter: blur(80px);
+      animation: pulse 6s ease-in-out infinite alternate;
+    }
+    .orb-1 { width: 500px; height: 500px; background: rgba(13,110,191,.2); top: -100px; right: -100px; }
+    .orb-2 { width: 300px; height: 300px; background: rgba(61,158,61,.12); bottom: -80px; left: 10%; animation-delay: 2s; }
+    @keyframes pulse { from { transform: scale(1); opacity: .8; } to { transform: scale(1.1); opacity: 1; } }
+
+    .hero-inner {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto; padding: 80px 5%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(61,158,61,.15); border: 1px solid rgba(61,158,61,.35);
+      color: var(--green2); padding: 6px 16px; border-radius: 50px;
+      font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero-badge span { width: 6px; height: 6px; background: var(--green2); border-radius: 50%; animation: blink 1.5s infinite; }
+    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+    .hero-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 900; color: var(--white); line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .hero-title .accent { color: var(--green2); }
+    .hero-sub {
+      color: rgba(255,255,255,.72); font-size: 18px; line-height: 1.7;
+      margin-bottom: 36px; max-width: 520px;
+    }
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green), var(--green2));
+      color: #fff; padding: 15px 32px; border-radius: 50px;
+      font-weight: 700; font-size: 15px; text-decoration: none;
+      box-shadow: 0 8px 24px rgba(61,158,61,.35);
+      transition: transform .2s, box-shadow .2s;
+      border: none; cursor: pointer;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(61,158,61,.45); }
+    .btn-ghost {
+      background: transparent; color: #fff;
+      padding: 14px 32px; border-radius: 50px;
+      font-weight: 600; font-size: 15px; text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,.35);
+      transition: border-color .2s, background .2s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,.7); background: rgba(255,255,255,.07); }
+    .hero-stats {
+      display: flex; gap: 32px; margin-top: 48px; padding-top: 36px;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+    .stat-item { text-align: left; }
+    .stat-num { font-family: 'Montserrat', sans-serif; font-size: 36px; font-weight: 900; color: var(--white); }
+    .stat-num span { color: var(--green2); }
+    .stat-label { font-size: 12px; color: rgba(255,255,255,.55); text-transform: uppercase; letter-spacing: .8px; margin-top: 2px; }
+
+    /* Hero visual side */
+    .hero-visual {
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .hero-logo-wrap {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 20px;
+      padding: 40px 32px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 24px 64px rgba(0,0,0,.3);
+      text-align: center;
+      animation: float 5s ease-in-out infinite;
+      max-width: 420px; width: 100%;
+    }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+    .floating-card {
+      position: absolute;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.15);
+      backdrop-filter: blur(12px);
+      border-radius: 14px; padding: 14px 18px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .fc-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .fc-text { font-size: 12px; color: rgba(255,255,255,.85); line-height: 1.4; }
+    .fc-text strong { display: block; color: #fff; font-size: 13px; }
+    .card-1 { top: 10%; right: -20px; animation: float 4s ease-in-out infinite; }
+    .card-2 { bottom: 15%; left: -20px; animation: float 4.5s ease-in-out infinite reverse; }
+
+    /* ── SECTION STYLES ── */
+    section { padding: 96px 5%; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      display: inline-block;
+      font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800; color: var(--navy); line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-sub { font-size: 17px; color: var(--muted); line-height: 1.7; max-width: 600px; }
+    .text-center { text-align: center; }
+    .text-center .section-sub { margin: 0 auto; }
+
+    /* ── SERVICIOS ── */
+    #servicios { background: var(--gray); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px; margin-top: 56px;
+    }
+    .service-card {
+      background: var(--white); border-radius: 20px;
+      padding: 36px 28px; border: 1px solid #E2E8F0;
+      box-shadow: var(--card-shadow);
+      transition: transform .3s, box-shadow .3s, border-color .3s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--navy), var(--blue));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .4s;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(13,43,90,.15); border-color: transparent; }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon {
+      width: 60px; height: 60px; border-radius: 16px;
+      background: var(--light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; margin-bottom: 20px;
+      transition: background .3s;
+    }
+    .service-card:hover .service-icon { background: linear-gradient(135deg, var(--navy), var(--blue)); }
+    .service-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 19px; font-weight: 700; color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .service-card p { color: var(--muted); font-size: 14px; line-height: 1.7; margin-bottom: 20px; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tag {
+      font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 50px;
+      background: var(--light); color: var(--blue);
+    }
+
+    /* ── POR QUÉ NOSOTROS ── */
+    #diferenciadores { background: var(--white); }
+    .why-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+      align-items: center; margin-top: 56px;
+    }
+    .why-visual {
+      background: linear-gradient(135deg, var(--navy), #0A4A8A, var(--blue));
+      border-radius: 24px; padding: 48px 40px;
+      position: relative; overflow: hidden;
+    }
+    .why-visual::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='69'%3E%3Cpolygon points='30,2 58,17 58,47 30,62 2,47 2,17' fill='none' stroke='%23fff' stroke-width='.5' opacity='.1'/%3E%3C/svg%3E");
+      background-size: 60px 69px;
+    }
+    .why-quote {
+      position: relative; z-index: 1;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 28px; font-weight: 800; color: #fff;
+      line-height: 1.3; margin-bottom: 24px;
+    }
+    .why-quote .q-accent { color: var(--green2); }
+    .why-metric { display: flex; gap: 32px; }
+    .wm { text-align: center; }
+    .wm-num { font-family: 'Montserrat', sans-serif; font-size: 40px; font-weight: 900; color: #fff; }
+    .wm-num span { color: var(--green2); }
+    .wm-label { font-size: 12px; color: rgba(255,255,255,.6); text-transform: uppercase; letter-spacing: .8px; }
+    .why-list { display: flex; flex-direction: column; gap: 20px; }
+    .why-item { display: flex; gap: 16px; align-items: flex-start; }
+    .wi-icon {
+      width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .wi-content h4 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .wi-content p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+    /* ── METODOLOGÍA ── */
+    #metodologia { background: linear-gradient(135deg, var(--navy), #0A4A8A); }
+    #metodologia .section-title { color: #fff; }
+    #metodologia .section-label { color: var(--green2); }
+    #metodologia .section-sub { color: rgba(255,255,255,.65); }
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 24px; margin-top: 56px; position: relative;
+    }
+    .steps-grid::before {
+      content: ''; position: absolute;
+      top: 32px; left: 12%; right: 12%; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--green2), transparent);
+      z-index: 0;
+    }
+    .step-card {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px; padding: 28px 20px;
+      text-align: center; position: relative; z-index: 1;
+      backdrop-filter: blur(8px);
+      transition: background .3s;
+    }
+    .step-card:hover { background: rgba(255,255,255,.12); }
+    .step-num {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--green), var(--green2));
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px; font-weight: 900; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .step-card h4 { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .step-card p { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.6; }
+
+    /* ── VALORES ── */
+    #valores { background: var(--gray); }
+    .valores-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+    .valor-card {
+      background: var(--white); border-radius: 16px; padding: 28px 24px;
+      border: 1px solid #E2E8F0; display: flex; gap: 16px; align-items: flex-start;
+      transition: box-shadow .3s, transform .3s;
+    }
+    .valor-card:hover { box-shadow: 0 8px 32px rgba(13,43,90,.10); transform: translateY(-3px); }
+    .valor-num { font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 900; color: var(--light); line-height: 1; flex-shrink: 0; width: 36px; }
+    .valor-content h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .valor-content p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── CONTACTO ── */
+    #contacto { background: var(--white); }
+    .contact-wrap {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+      align-items: start; margin-top: 56px;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 24px; }
+    .ci-item { display: flex; gap: 16px; align-items: flex-start; }
+    .ci-icon {
+      width: 48px; height: 48px; border-radius: 14px; flex-shrink: 0;
+      background: var(--light);
+      display: flex; align-items: center; justify-content: center; font-size: 22px;
+    }
+    .ci-text h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .ci-text a, .ci-text p { font-size: 14px; color: var(--muted); text-decoration: none; }
+    .ci-text a:hover { color: var(--blue); }
+    .whatsapp-btn {
+      display: flex; align-items: center; gap: 12px;
+      background: #25D366; color: #fff;
+      padding: 16px 28px; border-radius: 50px;
+      text-decoration: none; font-weight: 700; font-size: 15px;
+      box-shadow: 0 8px 24px rgba(37,211,102,.3);
+      transition: transform .2s, box-shadow .2s;
+      margin-top: 8px; width: fit-content;
+    }
+    .whatsapp-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(37,211,102,.4); }
+
+    /* Contact Form */
+    .contact-form { background: var(--gray); border-radius: 24px; padding: 40px; }
+    .contact-form h3 { font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 24px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
+    .form-group label { font-size: 13px; font-weight: 600; color: var(--navy); }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 12px 16px; border-radius: 10px;
+      border: 1.5px solid #E2E8F0;
+      font-family: 'Inter', sans-serif; font-size: 14px; color: var(--text);
+      background: var(--white); outline: none;
+      transition: border-color .2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--blue);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .btn-submit {
+      width: 100%; padding: 15px;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      color: #fff; border: none; border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px; font-weight: 700;
+      cursor: pointer; transition: opacity .2s, transform .2s;
+      box-shadow: 0 8px 24px rgba(13,43,90,.25);
+    }
+    .btn-submit:hover { opacity: .92; transform: translateY(-1px); }
+
+    /* ── FLOATING WHATSAPP ── */
+    .wa-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 999;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,.4);
+      text-decoration: none; transition: transform .2s;
+      animation: wa-bounce 2.5s ease-in-out infinite;
+    }
+    .wa-float:hover { transform: scale(1.08); }
+    @keyframes wa-bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+    .wa-float svg { width: 32px; height: 32px; fill: #fff; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      padding: 56px 5% 32px;
+      color: rgba(255,255,255,.6);
+    }
+    .footer-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+      padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .footer-brand p { font-size: 14px; line-height: 1.7; margin-top: 16px; max-width: 300px; }
+    .footer-col h4 { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+    .footer-col a { display: block; font-size: 14px; color: rgba(255,255,255,.5); text-decoration: none; margin-bottom: 10px; transition: color .2s; }
+    .footer-col a:hover { color: var(--green2); }
+    .footer-bottom {
+      max-width: 1200px; margin: 28px auto 0;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 13px;
+    }
+    .footer-bottom span { color: var(--green2); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-visual { display: none; }
+      .hero-ctas { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .why-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid::before { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .valores-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: rgba(10,22,40,.98); padding: 20px 5%; gap: 0; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.07); }
+      .nav-toggle { display: block; }
+      .contact-wrap { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .valores-grid { grid-template-columns: 1fr; }
+      .hero-stats { flex-wrap: wrap; gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── FLOATING WHATSAPP ── -->
+<a href="https://wa.me/TUNUMERO" class="wa-float" target="_blank" title="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.4 8.6 3.4 15.6c0 2.2.6 4.4 1.7 6.3L3 29l7.3-1.9c1.8 1 3.8 1.5 5.7 1.5 7 0 12.6-5.6 12.6-12.6C28.6 8.6 23 3 16 3zm6.6 17.8c-.3.8-1.5 1.5-2.1 1.6-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.2-.2-1.3-1.7-1.3-3.3 0-1.5.8-2.3 1.1-2.6.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.5.7c-.1.1-.2.3-.1.5.3.5.8 1.3 1.5 1.9.8.7 1.5 1 1.8 1.1.2.1.4.1.5-.1l.6-.7c.2-.2.4-.3.6-.2l2 .9c.3.1.5.2.5.5v.1z"/></svg>
+</a>
+
+<!-- ── NAV ── -->
+<nav id="navbar">
+  <a class="nav-logo" href="#hero">
+    <!-- LOGO SVG (basado en la identidad de marca) -->
+    <svg viewBox="0 0 220 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="20" font-family="Montserrat,sans-serif" font-weight="800" font-size="16" fill="#FFFFFF">TECHNOLOGICAL</text>
+      <text x="0" y="40" font-family="Montserrat,sans-serif" font-weight="800" font-size="20" fill="#1A8FE3">INNOVATI</text>
+      <text x="138" y="40" font-family="Montserrat,sans-serif" font-weight="800" font-size="20" fill="#1A8FE3">N</text>
+      <!-- Leaf/swoosh replacing the O -->
+      <g transform="translate(135,22)">
+        <ellipse cx="7" cy="7" rx="7" ry="7" fill="none" stroke="#1A8FE3" stroke-width="2.5"/>
+        <path d="M4 4 Q9 2 10 9 Q5 10 4 4Z" fill="#3D9E3D"/>
+      </g>
+    </svg>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#servicios">Servicios</a>
+    <a href="#diferenciadores">Nosotros</a>
+    <a href="#metodologia">Metodología</a>
+    <a href="#valores">Valores</a>
+    <a href="#contacto" class="btn-nav">Solicitar diagnóstico</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-particles">
+    <div class="hex-bg"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="circuit-line"></div>
+    <div class="circuit-line"></div>
+    <div class="circuit-line"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge"><span></span> Coaching &amp; Capacitación Empresarial</div>
+      <h1 class="hero-title">
+        Transformamos<br/>talento en<br/><span class="accent">resultados reales</span>
+      </h1>
+      <p class="hero-sub">
+        Desarrollamos el potencial humano de tu organización con metodologías prácticas,
+        vivenciales y con resultados medibles desde el primer programa.
+      </p>
+      <div class="hero-ctas">
+        <a href="#contacto" class="btn-primary">Diagnóstico gratuito →</a>
+        <a href="#servicios" class="btn-ghost">Ver servicios</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">100<span>%</span></div>
+          <div class="stat-label">Personalizado</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">+<span>50</span></div>
+          <div class="stat-label">Empresas atendidas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">4<span>+</span></div>
+          <div class="stat-label">Áreas de impacto</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-logo-wrap">
+        <svg viewBox="0 0 380 90" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;">
+          <text x="10" y="36" font-family="Montserrat,sans-serif" font-weight="800" font-size="28" fill="#FFFFFF">TECHNOLOGICAL</text>
+          <text x="10" y="72" font-family="Montserrat,sans-serif" font-weight="800" font-size="34" fill="#1A8FE3">INNOVATI</text>
+          <text x="246" y="72" font-family="Montserrat,sans-serif" font-weight="800" font-size="34" fill="#1A8FE3">N</text>
+          <g transform="translate(241,41)">
+            <ellipse cx="12" cy="13" rx="12" ry="13" fill="none" stroke="#1A8FE3" stroke-width="3.5"/>
+            <path d="M7 7 Q17 4 18 16 Q9 18 7 7Z" fill="#3D9E3D"/>
+          </g>
+        </svg>
+        <p style="color:rgba(255,255,255,.5);font-size:13px;margin-top:16px;letter-spacing:1.5px;text-transform:uppercase;">Transformamos talento en resultados</p>
+      </div>
+      <div class="floating-card card-1">
+        <div class="fc-icon" style="background:rgba(61,158,61,.2);">🎯</div>
+        <div class="fc-text"><strong>Resultados medibles</strong>KPIs desde el día 1</div>
+      </div>
+      <div class="floating-card card-2">
+        <div class="fc-icon" style="background:rgba(26,143,227,.2);">🏆</div>
+        <div class="fc-text"><strong>Metodología vivencial</strong>100% personalizada</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICIOS ── -->
+<section id="servicios">
+  <div class="section-inner">
+    <div class="text-center reveal">
+      <span class="section-label">Lo que hacemos</span>
+      <h2 class="section-title">Nuestros servicios</h2>
+      <p class="section-sub">Soluciones integrales diseñadas para transformar equipos y organizaciones con impacto real y medible.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">🧠</div>
+        <h3>Capacitación Empresarial</h3>
+        <p>Programas vivenciales que desarrollan habilidades de liderazgo, comunicación y trabajo en equipo con impacto inmediato.</p>
+        <div class="service-tags">
+          <span class="tag">Liderazgo</span>
+          <span class="tag">Comunicación</span>
+          <span class="tag">Team Building</span>
+          <span class="tag">Inteligencia Emocional</span>
+          <span class="tag">Servicio al Cliente</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">💰</div>
+        <h3>Finanzas Empresariales</h3>
+        <p>Educación financiera práctica para equipos no financieros. Transforma la relación de tu empresa con el dinero.</p>
+        <div class="service-tags">
+          <span class="tag">Finanzas para No Financieros</span>
+          <span class="tag">Educación Financiera</span>
+          <span class="tag">Presupuesto</span>
+          <span class="tag">Planificación</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">📊</div>
+        <h3>Gestión Organizacional</h3>
+        <p>Diseñamos la estructura interna de tu empresa: KPIs, procesos, manuales y cultura organizacional desde cero.</p>
+        <div class="service-tags">
+          <span class="tag">KPIs</span>
+          <span class="tag">POA / PAC / DNC</span>
+          <span class="tag">Manuales de Funciones</span>
+          <span class="tag">Cultura ADN</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🛡️</div>
+        <h3>Gestión de Riesgos</h3>
+        <p>Identificamos, evaluamos y gestionamos los riesgos de tu organización para garantizar cumplimiento y prevención.</p>
+        <div class="service-tags">
+          <span class="tag">Identificación de Riesgos</span>
+          <span class="tag">Seguridad Ocupacional</span>
+          <span class="tag">Cumplimiento Normativo</span>
+          <span class="tag">Prevención</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── POR QUÉ ELEGIRNOS ── -->
+<section id="diferenciadores">
+  <div class="section-inner">
+    <div class="why-grid">
+      <div class="why-visual reveal">
+        <div class="why-quote">
+          No solo capacitamos.<br/>
+          <span class="q-accent">Transformamos</span><br/>
+          equipos y empresas.
+        </div>
+        <div class="why-metric">
+          <div class="wm"><div class="wm-num">100<span>%</span></div><div class="wm-label">Personalizado</div></div>
+          <div class="wm"><div class="wm-num"><span>+</span>50</div><div class="wm-label">Empresas</div></div>
+          <div class="wm"><div class="wm-num">GT<span>+</span></div><div class="wm-label">Guatemala</div></div>
+        </div>
+      </div>
+      <div class="why-list">
+        <div class="why-item reveal">
+          <div class="wi-icon">🎯</div>
+          <div class="wi-content">
+            <h4>Resultados medibles en corto plazo</h4>
+            <p>Cada programa incluye métricas de impacto. Sabes exactamente qué cambió y cuánto mejoró.</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <div class="wi-icon">⚙️</div>
+          <div class="wi-content">
+            <h4>Metodología 100% práctica y vivencial</h4>
+            <p>Sin teorías vacías. Todo lo que aprendes lo aplicas en tu realidad empresarial desde el primer día.</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <div class="wi-icon">🤝</div>
+          <div class="wi-content">
+            <h4>Acompañamiento real, no solo formación</h4>
+            <p>Somos aliados estratégicos, no proveedores de cursos. Nos involucramos en cada proceso.</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <div class="wi-icon">🔬</div>
+          <div class="wi-content">
+            <h4>Enfoque integral: humano + financiero + estratégico</h4>
+            <p>Desarrollamos personas y estructuras. El crecimiento sostenible necesita ambos elementos.</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <div class="wi-icon">🌎</div>
+          <div class="wi-content">
+            <h4>Experiencia en el contexto guatemalteco</h4>
+            <p>Conocemos la realidad empresarial local. Nuestras soluciones son culturalmente relevantes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── METODOLOGÍA ── -->
+<section id="metodologia">
+  <div class="section-inner">
+    <div class="text-center reveal">
+      <span class="section-label">Cómo trabajamos</span>
+      <h2 class="section-title">Nuestra metodología</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,.65);">Un proceso estructurado que garantiza resultados reales en cada intervención.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal">
+        <div class="step-num">1</div>
+        <h4>Diagnóstico</h4>
+        <p>Identificamos las necesidades reales de tu organización con un DNC profundo.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">2</div>
+        <h4>Diseño</h4>
+        <p>Creamos un programa 100% personalizado para tu equipo, cultura y objetivos.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">3</div>
+        <h4>Implementación</h4>
+        <p>Ejecutamos con metodología vivencial, dinámica y orientada a resultados.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">4</div>
+        <h4>Medición</h4>
+        <p>Evaluamos el impacto con KPIs definidos y entregamos informe de resultados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── VALORES ── -->
+<section id="valores">
+  <div class="section-inner">
+    <div class="text-center reveal">
+      <span class="section-label">Lo que nos define</span>
+      <h2 class="section-title">Nuestros valores</h2>
+    </div>
+    <div class="valores-grid">
+      <div class="valor-card reveal"><div class="valor-num">01</div><div class="valor-content"><h4>Innovación</h4><p>Aplicamos metodologías modernas y dinámicas que generan experiencias de aprendizaje únicas.</p></div></div>
+      <div class="valor-card reveal"><div class="valor-num">02</div><div class="valor-content"><h4>Enfoque en Resultados</h4><p>Todo proceso debe generar impacto medible. Sin resultados, no hay transformación real.</p></div></div>
+      <div class="valor-card reveal"><div class="valor-num">03</div><div class="valor-content"><h4>Desarrollo Humano</h4><p>El crecimiento empresarial genuino inicia en las personas que forman la organización.</p></div></div>
+      <div class="valor-card reveal"><div class="valor-num">04</div><div class="valor-content"><h4>Compromiso</h4><p>Nos involucramos profundamente con cada cliente. Su éxito es nuestra prioridad.</p></div></div>
+      <div class="valor-card reveal"><div class="valor-num">05</div><div class="valor-content"><h4>Integridad</h4><p>Actuamos con ética y transparencia en cada proceso, sin excepción.</p></div></div>
+      <div class="valor-card reveal"><div class="valor-num">06</div><div class="valor-content"><h4>Adaptabilidad</h4><p>Creamos soluciones a la medida de cada organización, industria y cultura.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACTO ── -->
+<section id="contacto">
+  <div class="section-inner">
+    <div class="text-center reveal">
+      <span class="section-label">Trabajemos juntos</span>
+      <h2 class="section-title">¿Listo para transformar tu equipo?</h2>
+      <p class="section-sub">Solicita tu diagnóstico gratuito. Sin compromiso. Te contactamos en menos de 24 horas.</p>
+    </div>
+    <div class="contact-wrap">
+      <div class="contact-info reveal">
+        <div class="ci-item">
+          <div class="ci-icon">📧</div>
+          <div class="ci-text">
+            <h4>Correo electrónico</h4>
+            <a href="mailto:info@technologicalinnovation.gt">info@technologicalinnovation.gt</a>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">📍</div>
+          <div class="ci-text">
+            <h4>Ubicación</h4>
+            <p>Guatemala, Guatemala<br/>Atendemos toda la república</p>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">⏰</div>
+          <div class="ci-text">
+            <h4>Horario de atención</h4>
+            <p>Lunes a Viernes: 8:00 — 18:00<br/>Sábado: 8:00 — 13:00</p>
+          </div>
+        </div>
+        <a href="https://wa.me/TUNUMERO?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20sus%20servicios%20de%20capacitación%20empresarial." class="whatsapp-btn" target="_blank">
+          <svg viewBox="0 0 32 32" fill="white" width="24"><path d="M16 3C9 3 3.4 8.6 3.4 15.6c0 2.2.6 4.4 1.7 6.3L3 29l7.3-1.9c1.8 1 3.8 1.5 5.7 1.5 7 0 12.6-5.6 12.6-12.6C28.6 8.6 23 3 16 3zm6.6 17.8c-.3.8-1.5 1.5-2.1 1.6-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.2-.2-1.3-1.7-1.3-3.3 0-1.5.8-2.3 1.1-2.6.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.5.7c-.1.1-.2.3-.1.5.3.5.8 1.3 1.5 1.9.8.7 1.5 1 1.8 1.1.2.1.4.1.5-.1l.6-.7c.2-.2.4-.3.6-.2l2 .9c.3.1.5.2.5.5v.1z"/></svg>
+          Escríbenos por WhatsApp
+        </a>
+      </div>
+      <div class="contact-form reveal">
+        <h3>Solicita tu diagnóstico gratuito</h3>
+        <div class="form-row">
+          <div class="form-group"><label>Nombre completo *</label><input type="text" placeholder="Tu nombre"/></div>
+          <div class="form-group"><label>Empresa *</label><input type="text" placeholder="Nombre de tu empresa"/></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Correo electrónico *</label><input type="email" placeholder="correo@empresa.com"/></div>
+          <div class="form-group"><label>Teléfono / WhatsApp</label><input type="tel" placeholder="+502 0000-0000"/></div>
+        </div>
+        <div class="form-group">
+          <label>¿Qué necesita tu empresa?</label>
+          <select>
+            <option value="">Selecciona el servicio de interés</option>
+            <option>Capacitación Empresarial (Liderazgo, Comunicación, Team Building)</option>
+            <option>Finanzas para No Financieros</option>
+            <option>Gestión Organizacional (KPIs, Manuales, Cultura)</option>
+            <option>Gestión de Riesgos y Seguridad Ocupacional</option>
+            <option>Programa Integral / Varios servicios</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Cuéntanos más (opcional)</label>
+          <textarea placeholder="Describe brevemente el desafío que enfrenta tu equipo u organización..."></textarea>
+        </div>
+        <button class="btn-submit" type="button" onclick="enviarFormulario()">Solicitar diagnóstico gratuito →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <svg viewBox="0 0 220 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:36px;">
+        <text x="0" y="16" font-family="Montserrat,sans-serif" font-weight="800" font-size="13" fill="#FFFFFF">TECHNOLOGICAL</text>
+        <text x="0" y="36" font-family="Montserrat,sans-serif" font-weight="800" font-size="16" fill="#1A8FE3">INNOVATI</text>
+        <text x="111" y="36" font-family="Montserrat,sans-serif" font-weight="800" font-size="16" fill="#1A8FE3">N</text>
+        <g transform="translate(109,19)">
+          <ellipse cx="9" cy="10" rx="9" ry="10" fill="none" stroke="#1A8FE3" stroke-width="2"/>
+          <path d="M5 5 Q13 3 14 12 Q7 14 5 5Z" fill="#3D9E3D"/>
+        </g>
+      </svg>
+      <p>Transformamos talento en resultados reales. Coaching empresarial y capacitación organizacional en Guatemala.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <a href="#servicios">Capacitación Empresarial</a>
+      <a href="#servicios">Finanzas</a>
+      <a href="#servicios">Gestión Organizacional</a>
+      <a href="#servicios">Gestión de Riesgos</a>
+    </div>
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <a href="#diferenciadores">Quiénes somos</a>
+      <a href="#metodologia">Metodología</a>
+      <a href="#valores">Valores</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <a href="mailto:info@technologicalinnovation.gt">info@technologicalinnovation.gt</a>
+      <a href="https://wa.me/TUNUMERO" target="_blank">WhatsApp</a>
+      <a href="#contacto">Diagnóstico gratuito</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 <span>Technological Innovation</span> · Guatemala · Todos los derechos reservados</p>
+    <p>Hecho con estrategia y propósito 🇬🇹</p>
+  </div>
+</footer>
+
+<script>
+  // ── NAV SCROLL ──
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // ── MOBILE MENU ──
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  // ── SCROLL REVEAL ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── FORM ──
+  function enviarFormulario() {
+    const nombre = document.querySelector('input[placeholder="Tu nombre"]').value.trim();
+    const empresa = document.querySelector('input[placeholder="Nombre de tu empresa"]').value.trim();
+    const email = document.querySelector('input[placeholder="correo@empresa.com"]').value.trim();
+    if (!nombre || !empresa || !email) {
+      alert('Por favor completa los campos obligatorios (Nombre, Empresa y Correo).');
+      return;
+    }
+    // Redirigir a WhatsApp con los datos
+    const servicio = document.querySelector('select').value || 'No especificado';
+    const msg = encodeURIComponent(`Hola, soy ${nombre} de ${empresa}. Me interesa: ${servicio}. Mi correo es ${email}.`);
+    window.open(`https://wa.me/TUNUMERO?text=${msg}`, '_blank');
+  }
+
+  // ── SMOOTH ACTIVE NAV ──
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 90) current = s.id; });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--green2)' : '';
+    });
+  });
+</script>
+</body>
+</html>
