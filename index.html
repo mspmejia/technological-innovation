@@ -595,16 +595,23 @@
 <!-- ── NAV ── -->
 <nav id="navbar">
   <a class="nav-logo" href="#hero">
-    <!-- LOGO SVG (basado en la identidad de marca) -->
-    <svg viewBox="0 0 220 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <text x="0" y="20" font-family="Montserrat,sans-serif" font-weight="800" font-size="16" fill="#FFFFFF">TECHNOLOGICAL</text>
-      <text x="0" y="40" font-family="Montserrat,sans-serif" font-weight="800" font-size="20" fill="#1A8FE3">INNOVATI</text>
-      <text x="138" y="40" font-family="Montserrat,sans-serif" font-weight="800" font-size="20" fill="#1A8FE3">N</text>
-      <!-- Leaf/swoosh replacing the O -->
-      <g transform="translate(135,22)">
-        <ellipse cx="7" cy="7" rx="7" ry="7" fill="none" stroke="#1A8FE3" stroke-width="2.5"/>
-        <path d="M4 4 Q9 2 10 9 Q5 10 4 4Z" fill="#3D9E3D"/>
-      </g>
+    <!-- LOGO -->
+    <svg viewBox="0 0 252 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Globo izquierdo -->
+      <circle cx="20" cy="23" r="16" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+      <ellipse cx="20" cy="23" rx="8" ry="16" stroke="rgba(26,143,227,0.55)" stroke-width="1.2"/>
+      <line x1="4" y1="23" x2="36" y2="23" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+      <line x1="5"  y1="15" x2="35" y2="15" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
+      <line x1="5"  y1="31" x2="35" y2="31" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
+      <!-- Texto TECHNOLOGICAL -->
+      <text x="44" y="18" font-family="Montserrat,sans-serif" font-weight="800" font-size="13.5" fill="#FFFFFF" letter-spacing="0.8">TECHNOLOGICAL</text>
+      <!-- INNOVAT -->
+      <text x="44" y="39" font-family="Montserrat,sans-serif" font-weight="800" font-size="18" fill="#1A8FE3">INNOVAT</text>
+      <!-- O con hoja: "INNOVAT" ≈ 7 chars × ~12.6px = 88px → O center en x=44+98=142 -->
+      <circle cx="143" cy="31" r="9" stroke="#1A8FE3" stroke-width="2.2" fill="none"/>
+      <path d="M139,27 Q144,23 148,28 Q143,33 139,27Z" fill="#3D9E3D"/>
+      <!-- I final -->
+      <text x="153" y="39" font-family="Montserrat,sans-serif" font-weight="800" font-size="18" fill="#1A8FE3">ON</text>
     </svg>
   </a>
   <div class="nav-links" id="navLinks">
@@ -660,16 +667,12 @@
     </div>
     <div class="hero-visual">
       <div class="hero-logo-wrap">
-        <svg viewBox="0 0 380 90" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;">
-          <text x="10" y="36" font-family="Montserrat,sans-serif" font-weight="800" font-size="28" fill="#FFFFFF">TECHNOLOGICAL</text>
-          <text x="10" y="72" font-family="Montserrat,sans-serif" font-weight="800" font-size="34" fill="#1A8FE3">INNOVATI</text>
-          <text x="246" y="72" font-family="Montserrat,sans-serif" font-weight="800" font-size="34" fill="#1A8FE3">N</text>
-          <g transform="translate(241,41)">
-            <ellipse cx="12" cy="13" rx="12" ry="13" fill="none" stroke="#1A8FE3" stroke-width="3.5"/>
-            <path d="M7 7 Q17 4 18 16 Q9 18 7 7Z" fill="#3D9E3D"/>
-          </g>
-        </svg>
-        <p style="color:rgba(255,255,255,.5);font-size:13px;margin-top:16px;letter-spacing:1.5px;text-transform:uppercase;">Transformamos talento en resultados</p>
+        <img
+          src="logo.svg"
+          alt="Technological Innovation — Transformamos talento en resultados"
+          style="width:100%; max-width:480px; border-radius:16px; box-shadow:0 8px 40px rgba(0,0,0,0.35);"
+        />
+        <p style="color:rgba(255,255,255,.5);font-size:13px;margin-top:20px;letter-spacing:1.5px;text-transform:uppercase;">Transformamos talento en resultados</p>
       </div>
       <div class="floating-card card-1">
         <div class="fc-icon" style="background:rgba(61,158,61,.2);">🎯</div>
@@ -933,14 +936,22 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <svg viewBox="0 0 220 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:36px;">
-        <text x="0" y="16" font-family="Montserrat,sans-serif" font-weight="800" font-size="13" fill="#FFFFFF">TECHNOLOGICAL</text>
-        <text x="0" y="36" font-family="Montserrat,sans-serif" font-weight="800" font-size="16" fill="#1A8FE3">INNOVATI</text>
-        <text x="111" y="36" font-family="Montserrat,sans-serif" font-weight="800" font-size="16" fill="#1A8FE3">N</text>
-        <g transform="translate(109,19)">
-          <ellipse cx="9" cy="10" rx="9" ry="10" fill="none" stroke="#1A8FE3" stroke-width="2"/>
-          <path d="M5 5 Q13 3 14 12 Q7 14 5 5Z" fill="#3D9E3D"/>
-        </g>
+      <svg viewBox="0 0 232 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:36px;">
+        <!-- Globo -->
+        <circle cx="16" cy="22" r="13" stroke="rgba(255,255,255,0.22)" stroke-width="1.2"/>
+        <ellipse cx="16" cy="22" rx="6" ry="13" stroke="rgba(26,143,227,0.5)" stroke-width="1"/>
+        <line x1="3"  y1="22" x2="29" y2="22" stroke="rgba(255,255,255,0.22)" stroke-width="0.8"/>
+        <line x1="4"  y1="15" x2="28" y2="15" stroke="rgba(255,255,255,0.1)" stroke-width="0.6"/>
+        <line x1="4"  y1="29" x2="28" y2="29" stroke="rgba(255,255,255,0.1)" stroke-width="0.6"/>
+        <!-- TECHNOLOGICAL -->
+        <text x="34" y="16" font-family="Montserrat,sans-serif" font-weight="800" font-size="12" fill="#FFFFFF" letter-spacing="0.5">TECHNOLOGICAL</text>
+        <!-- INNOVAT -->
+        <text x="34" y="37" font-family="Montserrat,sans-serif" font-weight="800" font-size="15.5" fill="#1A8FE3">INNOVAT</text>
+        <!-- O con hoja: "INNOVAT" × 15.5px → ~7chars×10.8= 76px → O center at 34+84=118 -->
+        <circle cx="118" cy="29" r="8" stroke="#1A8FE3" stroke-width="2" fill="none"/>
+        <path d="M114,25 Q119,21 123,26 Q118,31 114,25Z" fill="#3D9E3D"/>
+        <!-- ON -->
+        <text x="127" y="37" font-family="Montserrat,sans-serif" font-weight="800" font-size="15.5" fill="#1A8FE3">ON</text>
       </svg>
       <p>Transformamos talento en resultados reales. Coaching empresarial y capacitación organizacional en Guatemala.</p>
     </div>
@@ -1055,16 +1066,7 @@
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('modal-cap')">&#x2715;</button>
     <div class="modal-img">
-      <!-- IMAGEN: reemplaza el bloque img-placeholder por: <img src="tu-imagen.jpg" alt="Capacitación Empresarial"> -->
-      <div class="img-placeholder">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="4" y="8" width="40" height="30" rx="3" stroke="white" stroke-width="2"/>
-          <circle cx="18" cy="20" r="4" stroke="white" stroke-width="2"/>
-          <path d="M8 38c2-6 6-9 10-9s8 3 10 9" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          <path d="M30 22h8M30 28h6" stroke="white" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <span>Imagen próximamente</span>
-      </div>
+      <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=780&q=80" alt="Capacitación Empresarial - Taller vivencial de liderazgo y trabajo en equipo"/>
       <div class="modal-icon-big">🧠</div>
     </div>
     <div class="modal-content">
@@ -1113,18 +1115,7 @@
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('modal-fin')">&#x2715;</button>
     <div class="modal-img">
-      <!-- IMAGEN: reemplaza el bloque img-placeholder por: <img src="tu-imagen.jpg" alt="Finanzas Empresariales"> -->
-      <div class="img-placeholder">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="6" y="10" width="36" height="28" rx="3" stroke="white" stroke-width="2"/>
-          <path d="M14 30l6-8 6 4 8-10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="14" cy="30" r="2" fill="white"/>
-          <circle cx="20" cy="22" r="2" fill="white"/>
-          <circle cx="26" cy="26" r="2" fill="white"/>
-          <circle cx="34" cy="16" r="2" fill="white"/>
-        </svg>
-        <span>Imagen próximamente</span>
-      </div>
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=780&q=80" alt="Finanzas Empresariales - Educación financiera para equipos"/>
       <div class="modal-icon-big">💰</div>
     </div>
     <div class="modal-content">
@@ -1172,17 +1163,7 @@
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('modal-gest')">&#x2715;</button>
     <div class="modal-img">
-      <!-- IMAGEN: reemplaza el bloque img-placeholder por: <img src="tu-imagen.jpg" alt="Gestión Organizacional"> -->
-      <div class="img-placeholder">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="18" y="6" width="12" height="8" rx="2" stroke="white" stroke-width="2"/>
-          <rect x="6" y="22" width="12" height="8" rx="2" stroke="white" stroke-width="2"/>
-          <rect x="30" y="22" width="12" height="8" rx="2" stroke="white" stroke-width="2"/>
-          <rect x="18" y="34" width="12" height="8" rx="2" stroke="white" stroke-width="2"/>
-          <path d="M24 14v4M12 26h-2v4h2M36 26h2v4h-2M24 30v4" stroke="white" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <span>Imagen próximamente</span>
-      </div>
+      <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=780&q=80" alt="Gestión Organizacional - Estructura y procesos empresariales"/>
       <div class="modal-icon-big">📊</div>
     </div>
     <div class="modal-content">
@@ -1230,14 +1211,7 @@
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('modal-riesg')">&#x2715;</button>
     <div class="modal-img">
-      <!-- IMAGEN: reemplaza el bloque img-placeholder por: <img src="tu-imagen.jpg" alt="Gestión de Riesgos"> -->
-      <div class="img-placeholder">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M24 6L6 14v12c0 10 8 18 18 20 10-2 18-10 18-20V14L24 6z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-          <path d="M17 24l5 5 9-9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span>Imagen próximamente</span>
-      </div>
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=780&q=80" alt="Gestión de Riesgos - Seguridad y cumplimiento organizacional"/>
       <div class="modal-icon-big">🛡️</div>
     </div>
     <div class="modal-content">
