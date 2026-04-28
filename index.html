@@ -235,6 +235,151 @@
       background: var(--light); color: var(--blue);
     }
 
+
+    /* ── MODALES DE SERVICIOS ── */
+    .service-card { cursor: pointer; }
+    .service-card .btn-ver-mas {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 20px; padding: 10px 20px;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      color: #fff; border: none; border-radius: 50px;
+      font-size: 13px; font-weight: 700; cursor: pointer;
+      transition: opacity .2s, transform .2s;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .service-card .btn-ver-mas:hover { opacity: .88; transform: translateY(-1px); }
+    .service-card .btn-ver-mas svg { width: 14px; height: 14px; }
+
+    /* Overlay */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 9000;
+      background: rgba(10,22,40,.72);
+      backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+    /* Modal */
+    .modal-box {
+      background: var(--white);
+      border-radius: 24px;
+      max-width: 780px; width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      transform: translateY(24px) scale(.97);
+      transition: transform .35s cubic-bezier(.22,1,.36,1);
+      box-shadow: 0 32px 80px rgba(0,0,0,.35);
+    }
+    .modal-overlay.open .modal-box { transform: translateY(0) scale(1); }
+
+    /* Área de imagen */
+    .modal-img {
+      width: 100%; height: 240px;
+      border-radius: 24px 24px 0 0;
+      overflow: hidden; position: relative;
+      background: linear-gradient(135deg, var(--navy), #0A4A8A, var(--blue));
+      display: flex; align-items: center; justify-content: center;
+    }
+    .modal-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block;
+    }
+    .modal-img .img-placeholder {
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      color: rgba(255,255,255,.45); font-size: 13px; font-family: 'Montserrat',sans-serif;
+    }
+    .modal-img .img-placeholder svg { width: 48px; height: 48px; opacity: .4; }
+    .modal-img .modal-icon-big {
+      position: absolute; bottom: -28px; left: 36px;
+      width: 56px; height: 56px; border-radius: 16px;
+      background: var(--white); box-shadow: 0 4px 20px rgba(0,0,0,.18);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px;
+    }
+
+    /* Contenido */
+    .modal-content { padding: 48px 36px 36px; }
+    .modal-content h2 {
+      font-family: 'Montserrat',sans-serif;
+      font-size: 24px; font-weight: 800; color: var(--navy); margin-bottom: 10px;
+    }
+    .modal-content .modal-sub {
+      font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 28px;
+    }
+    .modal-section { margin-bottom: 24px; }
+    .modal-section h4 {
+      font-family: 'Montserrat',sans-serif;
+      font-size: 13px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .8px; color: var(--blue); margin-bottom: 12px;
+    }
+    .modal-programs {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    }
+    .modal-program-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      background: var(--gray); border-radius: 12px; padding: 12px 14px;
+      font-size: 13px; color: var(--text); font-weight: 500;
+    }
+    .modal-program-item::before {
+      content: '✓'; color: var(--green); font-weight: 900;
+      flex-shrink: 0; margin-top: 0px;
+    }
+    .modal-benefits {
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .modal-benefit {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 14px; color: var(--text); line-height: 1.5;
+    }
+    .modal-benefit-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--green); flex-shrink: 0; margin-top: 6px;
+    }
+    .modal-cta {
+      display: flex; gap: 12px; flex-wrap: wrap;
+      padding-top: 28px; border-top: 1px solid #E2E8F0; margin-top: 28px;
+    }
+    .modal-btn-wa {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px; border-radius: 50px;
+      background: #25D366; color: #fff;
+      font-family: 'Montserrat',sans-serif; font-size: 14px; font-weight: 700;
+      text-decoration: none; transition: background .2s, transform .2s;
+    }
+    .modal-btn-wa:hover { background: #1EBE5A; transform: translateY(-1px); }
+    .modal-btn-wa svg { width: 18px; height: 18px; }
+    .modal-btn-sec {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px; border-radius: 50px;
+      border: 2px solid var(--navy); color: var(--navy);
+      font-family: 'Montserrat',sans-serif; font-size: 14px; font-weight: 700;
+      text-decoration: none; transition: background .2s, color .2s;
+    }
+    .modal-btn-sec:hover { background: var(--navy); color: #fff; }
+
+    /* Close button */
+    .modal-close {
+      position: absolute; top: 16px; right: 16px;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(0,0,0,.35); border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 18px; line-height: 1;
+      transition: background .2s;
+      z-index: 10;
+    }
+    .modal-close:hover { background: rgba(0,0,0,.6); }
+
+    @media (max-width: 600px) {
+      .modal-content { padding: 36px 20px 24px; }
+      .modal-programs { grid-template-columns: 1fr; }
+      .modal-img { height: 180px; }
+      .modal-content h2 { font-size: 20px; }
+    }
+
     /* ── POR QUÉ NOSOTROS ── */
     #diferenciadores { background: var(--white); }
     .why-grid {
@@ -443,7 +588,7 @@
 <body>
 
 <!-- ── FLOATING WHATSAPP ── -->
-<a href="https://wa.me/TUNUMERO" class="wa-float" target="_blank" title="Escríbenos por WhatsApp">
+<a href="https://wa.me/50252678664" class="wa-float" target="_blank" title="Escríbenos por WhatsApp">
   <svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.4 8.6 3.4 15.6c0 2.2.6 4.4 1.7 6.3L3 29l7.3-1.9c1.8 1 3.8 1.5 5.7 1.5 7 0 12.6-5.6 12.6-12.6C28.6 8.6 23 3 16 3zm6.6 17.8c-.3.8-1.5 1.5-2.1 1.6-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.2-.2-1.3-1.7-1.3-3.3 0-1.5.8-2.3 1.1-2.6.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.5.7c-.1.1-.2.3-.1.5.3.5.8 1.3 1.5 1.9.8.7 1.5 1 1.8 1.1.2.1.4.1.5-.1l.6-.7c.2-.2.4-.3.6-.2l2 .9c.3.1.5.2.5.5v.1z"/></svg>
 </a>
 
@@ -547,7 +692,9 @@
       <p class="section-sub">Soluciones integrales diseñadas para transformar equipos y organizaciones con impacto real y medible.</p>
     </div>
     <div class="services-grid">
-      <div class="service-card reveal">
+
+      <!-- CARD 1 -->
+      <div class="service-card reveal" onclick="openModal('modal-cap')">
         <div class="service-icon">🧠</div>
         <h3>Capacitación Empresarial</h3>
         <p>Programas vivenciales que desarrollan habilidades de liderazgo, comunicación y trabajo en equipo con impacto inmediato.</p>
@@ -558,8 +705,11 @@
           <span class="tag">Inteligencia Emocional</span>
           <span class="tag">Servicio al Cliente</span>
         </div>
+        <button class="btn-ver-mas">Ver programa completo <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1l7 7-7 7M1 8h14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button>
       </div>
-      <div class="service-card reveal">
+
+      <!-- CARD 2 -->
+      <div class="service-card reveal" onclick="openModal('modal-fin')">
         <div class="service-icon">💰</div>
         <h3>Finanzas Empresariales</h3>
         <p>Educación financiera práctica para equipos no financieros. Transforma la relación de tu empresa con el dinero.</p>
@@ -569,8 +719,11 @@
           <span class="tag">Presupuesto</span>
           <span class="tag">Planificación</span>
         </div>
+        <button class="btn-ver-mas">Ver programa completo <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1l7 7-7 7M1 8h14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button>
       </div>
-      <div class="service-card reveal">
+
+      <!-- CARD 3 -->
+      <div class="service-card reveal" onclick="openModal('modal-gest')">
         <div class="service-icon">📊</div>
         <h3>Gestión Organizacional</h3>
         <p>Diseñamos la estructura interna de tu empresa: KPIs, procesos, manuales y cultura organizacional desde cero.</p>
@@ -580,8 +733,11 @@
           <span class="tag">Manuales de Funciones</span>
           <span class="tag">Cultura ADN</span>
         </div>
+        <button class="btn-ver-mas">Ver programa completo <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1l7 7-7 7M1 8h14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button>
       </div>
-      <div class="service-card reveal">
+
+      <!-- CARD 4 -->
+      <div class="service-card reveal" onclick="openModal('modal-riesg')">
         <div class="service-icon">🛡️</div>
         <h3>Gestión de Riesgos</h3>
         <p>Identificamos, evaluamos y gestionamos los riesgos de tu organización para garantizar cumplimiento y prevención.</p>
@@ -591,7 +747,9 @@
           <span class="tag">Cumplimiento Normativo</span>
           <span class="tag">Prevención</span>
         </div>
+        <button class="btn-ver-mas">Ver programa completo <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1l7 7-7 7M1 8h14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button>
       </div>
+
     </div>
   </div>
 </section>
@@ -718,7 +876,7 @@
           <div class="ci-icon">📧</div>
           <div class="ci-text">
             <h4>Correo electrónico</h4>
-            <a href="mailto:info@technologicalinnovation.gt">info@technologicalinnovation.gt</a>
+            <a href="mailto:servicioalcliente@innovations502.com">servicioalcliente@innovations502.com</a>
           </div>
         </div>
         <div class="ci-item">
@@ -735,7 +893,7 @@
             <p>Lunes a Viernes: 8:00 — 18:00<br/>Sábado: 8:00 — 13:00</p>
           </div>
         </div>
-        <a href="https://wa.me/TUNUMERO?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20sus%20servicios%20de%20capacitación%20empresarial." class="whatsapp-btn" target="_blank">
+        <a href="https://wa.me/50252678664?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20sus%20servicios%20de%20capacitación%20empresarial." class="whatsapp-btn" target="_blank">
           <svg viewBox="0 0 32 32" fill="white" width="24"><path d="M16 3C9 3 3.4 8.6 3.4 15.6c0 2.2.6 4.4 1.7 6.3L3 29l7.3-1.9c1.8 1 3.8 1.5 5.7 1.5 7 0 12.6-5.6 12.6-12.6C28.6 8.6 23 3 16 3zm6.6 17.8c-.3.8-1.5 1.5-2.1 1.6-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.2-.2-1.3-1.7-1.3-3.3 0-1.5.8-2.3 1.1-2.6.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.5.7c-.1.1-.2.3-.1.5.3.5.8 1.3 1.5 1.9.8.7 1.5 1 1.8 1.1.2.1.4.1.5-.1l.6-.7c.2-.2.4-.3.6-.2l2 .9c.3.1.5.2.5.5v.1z"/></svg>
           Escríbenos por WhatsApp
         </a>
@@ -802,8 +960,8 @@
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
-      <a href="mailto:info@technologicalinnovation.gt">info@technologicalinnovation.gt</a>
-      <a href="https://wa.me/TUNUMERO" target="_blank">WhatsApp</a>
+      <a href="mailto:servicioalcliente@innovations502.com">servicioalcliente@innovations502.com</a>
+      <a href="https://wa.me/50252678664" target="_blank">WhatsApp</a>
       <a href="#contacto">Diagnóstico gratuito</a>
     </div>
   </div>
@@ -844,7 +1002,7 @@
     // Redirigir a WhatsApp con los datos
     const servicio = document.querySelector('select').value || 'No especificado';
     const msg = encodeURIComponent(`Hola, soy ${nombre} de ${empresa}. Me interesa: ${servicio}. Mi correo es ${email}.`);
-    window.open(`https://wa.me/TUNUMERO?text=${msg}`, '_blank');
+    window.open(`https://wa.me/50252678664?text=${msg}`, '_blank');
   }
 
   // ── SMOOTH ACTIVE NAV ──
@@ -856,6 +1014,271 @@
       a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--green2)' : '';
     });
   });
+
+  // ── MODALES ──
+  function openModal(id) {
+    const overlay = document.getElementById(id);
+    if (!overlay) return;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    const overlay = document.getElementById(id);
+    if (!overlay) return;
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeModalOutside(event, overlay) {
+    if (event.target === overlay) {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+  // Cerrar con Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.open').forEach(m => {
+        m.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    }
+  });
+
 </script>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MODALES DE SERVICIOS
+══════════════════════════════════════════════════════════════ -->
+
+<!-- MODAL: Capacitación Empresarial -->
+<div id="modal-cap" class="modal-overlay" onclick="closeModalOutside(event,this)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-cap')">&#x2715;</button>
+    <div class="modal-img">
+      <!-- IMAGEN: reemplaza el bloque img-placeholder por: <img src="tu-imagen.jpg" alt="Capacitación Empresarial"> -->
+      <div class="img-placeholder">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="8" width="40" height="30" rx="3" stroke="white" stroke-width="2"/>
+          <circle cx="18" cy="20" r="4" stroke="white" stroke-width="2"/>
+          <path d="M8 38c2-6 6-9 10-9s8 3 10 9" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <path d="M30 22h8M30 28h6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Imagen próximamente</span>
+      </div>
+      <div class="modal-icon-big">🧠</div>
+    </div>
+    <div class="modal-content">
+      <h2>Capacitación Empresarial</h2>
+      <p class="modal-sub">Diseñamos e implementamos programas de capacitación vivenciales y personalizados que generan cambios reales en el comportamiento y desempeño de tu equipo. No teoría: acción medible desde el primer día.</p>
+
+      <div class="modal-section">
+        <h4>Programas disponibles</h4>
+        <div class="modal-programs">
+          <div class="modal-program-item">Liderazgo transformacional</div>
+          <div class="modal-program-item">Comunicación efectiva</div>
+          <div class="modal-program-item">Trabajo en equipo</div>
+          <div class="modal-program-item">Inteligencia emocional</div>
+          <div class="modal-program-item">Resolución de conflictos</div>
+          <div class="modal-program-item">Servicio al cliente de excelencia</div>
+          <div class="modal-program-item">Cultura organizacional</div>
+          <div class="modal-program-item">Team Building vivencial</div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>¿Qué incluye cada programa?</h4>
+        <div class="modal-benefits">
+          <div class="modal-benefit"><div class="modal-benefit-dot"></div><span>Diagnóstico previo de necesidades (DNC) para personalizar el contenido</span></div>
+          <div class="modal-benefit"><div class="modal-benefit-dot"></div><span>Facilitación dinámica con metodología práctica y vivencial</span></div>
+          <div class="modal-benefit"><div class="modal-benefit-dot"></div><span>Material de apoyo digital para cada participante</span></div>
+          <div class="modal-benefit"><div class="modal-benefit-dot"></div><span>Medición de impacto antes y después del programa</span></div>
+          <div class="modal-benefit"><div class="modal-benefit-dot"></div><span>Informe ejecutivo de resultados para Recursos Humanos o Gerencia</span></div>
+          <div class="modal-benefit"><div class="modal-benefit-dot"></div><span>Certificado de participación para cada colaborador</span></div>
+        </div>
+      </div>
+
+      <div class="modal-cta">
+        <a href="https://wa.me/50252678664?text=Hola,%20me%20interesa%20el%20programa%20de%20Capacitación%20Empresarial.%20¿Pueden%20enviarme%20información?" class="modal-btn-wa" target="_blank">
+          <svg viewBox="0 0 32 32"><path fill="white" d="M16 3C9 3 3.4 8.6 3.4 15.6c0 2.2.6 4.4 1.7 6.3L3 29l7.3-1.9c1.8 1 3.8 1.5 5.7 1.5 7 0 12.6-5.6 12.6-12.6C28.6 8.6 23 3 16 3zm6.6 17.8c-.3.8-1.5 1.5-2.1 1.6-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.2-.2-1.3-1.7-1.3-3.3 0-1.5.8-2.3 1.1-2.6.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.5.7c-.1.1-.2.3-.1.5.3.5.8 1.3 1.5 1.9.8.7 1.5 1 1.8 1.1.2.1.4.1.5-.1l.6-.7c.2-.2.4-.3.6-.2l2 .9c.3.1.5.2.5.5v.1z"/></svg>
+          Solicitar información
+        </a>
+        <a href="#contacto" class="modal-btn-sec" onclick="closeModal('modal-cap')">Diagnóstico gratuito</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Finanzas Empresariales -->
+<div id="modal-fin" class="modal-overlay" onclick="closeModalOutside(event,this)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-fin')">&#x2715;</button>
+    <div class="modal-img">
+      <!-- IMAGEN: reemplaza el bloque img-placeholder por: <img src="tu-imagen.jpg" alt="Finanzas Empresariales"> -->
+      <div class="img-placeholder">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="10" width="36" height="28" rx="3" stroke="white" stroke-width="2"/>
+          <path d="M14 30l6-8 6 4 8-10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="14" cy="30" r="2" fill="white"/>
+          <circle cx="20" cy="22" r="2" fill="white"/>
+          <circle cx="26" cy="26" r="2" fill="white"/>
+          <circle cx="34" cy="16" r="2" fill="white"/>
+        </svg>
+        <span>Imagen próximamente</span>
+      </div>
+      <div class="modal-icon-big">💰</div>
+    </div>
+    <div class="modal-content">
+      <h2>Finanzas Empresariales</h2>
+      <p class="modal-sub">Capacitamos a equipos no financieros para que entiendan, interpreten y tomen decisiones basadas en números. Transformamos la relación de tu empresa con el dinero, desde la operación hasta la dirección.</p>
+
+      <div class="modal-section">
+        <h4>Programas disponibles</h4>
+        <div class="modal-programs">
+          <div class="modal-program-item">Finanzas para no financieros</div>
+          <div class="modal-program-item">Educación financiera personal</div>
+          <div class="modal-program-item">Manejo emocional del dinero</div>
+          <div class="modal-program-item">Presupuesto y planificación</div>
+          <div class="modal-program-item">Lectura de estados financieros</div>
+          <div class="modal-program-item">Control de costos y gastos</div>
+          <div class="modal-program-item">Flujo de caja y liquidez</div>
+          <div class="modal-program-item">Toma de decisiones financieras</div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>¿Qué logra tu equipo?</h4>
+        <div class="modal-benefits">
+          <div class="modal-benefit"><div class="modal-benefit-dot"></div><span>Comprenden el lenguaje financiero sin ser contadores ni administradores</span></div>
+          <div class="modal-benefit"><div class="modal-benefit-dot"></div><span>Identifican oportunidades de ahorro y eficiencia en su área</span></div>
+          <div class="modal-benefit"><div class="modal-benefit-dot"></div><span>Toman decisiones con consciencia del impacto económico</span></div>
+          <div class="modal-benefit"><div class="modal-benefit-dot"></div><span>Mejoran su planificación presupuestaria departamental</span></div>
+          <div class="modal-benefit"><div class="modal-benefit-dot"></div><span>Desarrollan hábitos financieros saludables en lo personal y profesional</span></div>
+        </div>
+      </div>
+
+      <div class="modal-cta">
+        <a href="https://wa.me/50252678664?text=Hola,%20me%20interesa%20el%20programa%20de%20Finanzas%20Empresariales.%20¿Pueden%20enviarme%20información?" class="modal-btn-wa" target="_blank">
+          <svg viewBox="0 0 32 32"><path fill="white" d="M16 3C9 3 3.4 8.6 3.4 15.6c0 2.2.6 4.4 1.7 6.3L3 29l7.3-1.9c1.8 1 3.8 1.5 5.7 1.5 7 0 12.6-5.6 12.6-12.6C28.6 8.6 23 3 16 3zm6.6 17.8c-.3.8-1.5 1.5-2.1 1.6-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.2-.2-1.3-1.7-1.3-3.3 0-1.5.8-2.3 1.1-2.6.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.5.7c-.1.1-.2.3-.1.5.3.5.8 1.3 1.5 1.9.8.7 1.5 1 1.8 1.1.2.1.4.1.5-.1l.6-.7c.2-.2.4-.3.6-.2l2 .9c.3.1.5.2.5.5v.1z"/></svg>
+          Solicitar información
+        </a>
+        <a href="#contacto" class="modal-btn-sec" onclick="closeModal('modal-fin')">Diagnóstico gratuito</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Gestión Organizacional -->
+<div id="modal-gest" class="modal-overlay" onclick="closeModalOutside(event,this)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-gest')">&#x2715;</button>
+    <div class="modal-img">
+      <!-- IMAGEN: reemplaza el bloque img-placeholder por: <img src="tu-imagen.jpg" alt="Gestión Organizacional"> -->
+      <div class="img-placeholder">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="18" y="6" width="12" height="8" rx="2" stroke="white" stroke-width="2"/>
+          <rect x="6" y="22" width="12" height="8" rx="2" stroke="white" stroke-width="2"/>
+          <rect x="30" y="22" width="12" height="8" rx="2" stroke="white" stroke-width="2"/>
+          <rect x="18" y="34" width="12" height="8" rx="2" stroke="white" stroke-width="2"/>
+          <path d="M24 14v4M12 26h-2v4h2M36 26h2v4h-2M24 30v4" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Imagen próximamente</span>
+      </div>
+      <div class="modal-icon-big">📊</div>
+    </div>
+    <div class="modal-content">
+      <h2>Gestión Organizacional</h2>
+      <p class="modal-sub">Diseñamos la arquitectura interna de tu empresa: estructura, procesos, indicadores y cultura. Convertimos organizaciones informales en empresas con sistemas claros, eficientes y escalables.</p>
+
+      <div class="modal-section">
+        <h4>Servicios incluidos</h4>
+        <div class="modal-programs">
+          <div class="modal-program-item">Diseño de KPIs e indicadores</div>
+          <div class="modal-program-item">Plan Operativo Anual (POA)</div>
+          <div class="modal-program-item">Plan Anual de Capacitación (PAC)</div>
+          <div class="modal-program-item">Diagnóstico de Necesidades (DNC)</div>
+          <div class="modal-program-item">Manuales de funciones</div>
+          <div class="modal-program-item">Descriptores de puesto</div>
+          <div class="modal-program-item">Manuales de servicio</div>
+          <div class="modal-program-item">Cultura organizacional ADN</div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>Impacto en tu organización</h4>
+        <div class="modal-benefits">
+          <div class="modal-benefit"><div class="modal-benefit-dot"></div><span>Claridad de roles: cada persona sabe qué hace, cómo y para qué</span></div>
+          <div class="modal-benefit"><div class="modal-benefit-dot"></div><span>Indicadores que permiten medir el desempeño y tomar decisiones basadas en datos</span></div>
+          <div class="modal-benefit"><div class="modal-benefit-dot"></div><span>Procesos documentados que reducen errores, reprocesos y dependencia de personas clave</span></div>
+          <div class="modal-benefit"><div class="modal-benefit-dot"></div><span>Cultura organizacional definida que atrae y retiene talento</span></div>
+          <div class="modal-benefit"><div class="modal-benefit-dot"></div><span>Base sólida para escalar, crecer y profesionalizar la empresa</span></div>
+        </div>
+      </div>
+
+      <div class="modal-cta">
+        <a href="https://wa.me/50252678664?text=Hola,%20me%20interesa%20el%20servicio%20de%20Gestión%20Organizacional.%20¿Pueden%20enviarme%20información?" class="modal-btn-wa" target="_blank">
+          <svg viewBox="0 0 32 32"><path fill="white" d="M16 3C9 3 3.4 8.6 3.4 15.6c0 2.2.6 4.4 1.7 6.3L3 29l7.3-1.9c1.8 1 3.8 1.5 5.7 1.5 7 0 12.6-5.6 12.6-12.6C28.6 8.6 23 3 16 3zm6.6 17.8c-.3.8-1.5 1.5-2.1 1.6-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.2-.2-1.3-1.7-1.3-3.3 0-1.5.8-2.3 1.1-2.6.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.5.7c-.1.1-.2.3-.1.5.3.5.8 1.3 1.5 1.9.8.7 1.5 1 1.8 1.1.2.1.4.1.5-.1l.6-.7c.2-.2.4-.3.6-.2l2 .9c.3.1.5.2.5.5v.1z"/></svg>
+          Solicitar información
+        </a>
+        <a href="#contacto" class="modal-btn-sec" onclick="closeModal('modal-gest')">Diagnóstico gratuito</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Gestión de Riesgos -->
+<div id="modal-riesg" class="modal-overlay" onclick="closeModalOutside(event,this)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-riesg')">&#x2715;</button>
+    <div class="modal-img">
+      <!-- IMAGEN: reemplaza el bloque img-placeholder por: <img src="tu-imagen.jpg" alt="Gestión de Riesgos"> -->
+      <div class="img-placeholder">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 6L6 14v12c0 10 8 18 18 20 10-2 18-10 18-20V14L24 6z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M17 24l5 5 9-9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Imagen próximamente</span>
+      </div>
+      <div class="modal-icon-big">🛡️</div>
+    </div>
+    <div class="modal-content">
+      <h2>Gestión de Riesgos</h2>
+      <p class="modal-sub">Identificamos, analizamos y gestionamos los riesgos operacionales, laborales y normativos de tu organización. Protegemos a tu empresa, a tu equipo y tu operación con una gestión proactiva y estructurada.</p>
+
+      <div class="modal-section">
+        <h4>Servicios disponibles</h4>
+        <div class="modal-programs">
+          <div class="modal-program-item">Identificación y análisis de riesgos</div>
+          <div class="modal-program-item">Seguridad y salud ocupacional</div>
+          <div class="modal-program-item">Cumplimiento normativo</div>
+          <div class="modal-program-item">Planes de prevención</div>
+          <div class="modal-program-item">Matrices de riesgo</div>
+          <div class="modal-program-item">Auditorías de seguridad</div>
+          <div class="modal-program-item">Protocolos de emergencia</div>
+          <div class="modal-program-item">Capacitación en prevención</div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>¿Por qué es urgente para tu empresa?</h4>
+        <div class="modal-benefits">
+          <div class="modal-benefit"><div class="modal-benefit-dot"></div><span>Cumplimiento con el Acuerdo Gubernativo 229-2014 de salud y seguridad ocupacional en Guatemala</span></div>
+          <div class="modal-benefit"><div class="modal-benefit-dot"></div><span>Reducción de accidentes laborales y sus costos asociados</span></div>
+          <div class="modal-benefit"><div class="modal-benefit-dot"></div><span>Protección legal ante inspecciones del IGSS y Ministerio de Trabajo</span></div>
+          <div class="modal-benefit"><div class="modal-benefit-dot"></div><span>Cultura de prevención que mejora el clima laboral y reduce el ausentismo</span></div>
+          <div class="modal-benefit"><div class="modal-benefit-dot"></div><span>Continuidad operacional ante situaciones de emergencia o crisis</span></div>
+        </div>
+      </div>
+
+      <div class="modal-cta">
+        <a href="https://wa.me/50252678664?text=Hola,%20me%20interesa%20el%20servicio%20de%20Gestión%20de%20Riesgos.%20¿Pueden%20enviarme%20información?" class="modal-btn-wa" target="_blank">
+          <svg viewBox="0 0 32 32"><path fill="white" d="M16 3C9 3 3.4 8.6 3.4 15.6c0 2.2.6 4.4 1.7 6.3L3 29l7.3-1.9c1.8 1 3.8 1.5 5.7 1.5 7 0 12.6-5.6 12.6-12.6C28.6 8.6 23 3 16 3zm6.6 17.8c-.3.8-1.5 1.5-2.1 1.6-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.2-.2-1.3-1.7-1.3-3.3 0-1.5.8-2.3 1.1-2.6.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.5.7c-.1.1-.2.3-.1.5.3.5.8 1.3 1.5 1.9.8.7 1.5 1 1.8 1.1.2.1.4.1.5-.1l.6-.7c.2-.2.4-.3.6-.2l2 .9c.3.1.5.2.5.5v.1z"/></svg>
+          Solicitar información
+        </a>
+        <a href="#contacto" class="modal-btn-sec" onclick="closeModal('modal-riesg')">Diagnóstico gratuito</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
